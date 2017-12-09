@@ -11,6 +11,12 @@ When I started actively investing/speculating in cryptocurrencies, I wanted a si
 ### Prerequisites
 * [Julia](https://julialang.org/) — *A high-level dynamic programming language designed to address the needs of high-performance numerical analysis and computational science*
 
+### Installation
+
+The script depends on the [Requests](https://github.com/JuliaWeb/Requests.jl) package to function properly, so it must be installed first:
+
+`julia> Pkg.add("Requests")`
+
 ### Instructions
 
 Begin by addning your investments: Invoke the script with the `buy` command: `julia cw.jl buy 1.0 bitcoin`. The script will now add 1 Bitcoin to the wallet and display your wallet contents.
