@@ -67,6 +67,10 @@ struct SpeculateCmd
   priceusd::Float64
 end
 
+struct FilterWalletCmd
+  coinnames::Array{String}
+end
+
 struct TableCell
   text::AbstractString
   align::Symbol
@@ -258,6 +262,14 @@ function parseargs(args)
     catch
       HelpCmd()
     end
+  elseif s == "only"
+    try
+      coins = args[2:end] .|> lowercase
+
+      FilterWalletCmd(coins)
+    catch
+      HelpCmd()
+    end
   elseif s == "wallet"
     DisplayWalletCmd()
   else
@@ -353,6 +365,13 @@ function execute!(speculate::SpeculateCmd, model)
   execute!(DisplayWalletCmd(), model)
 end
 
+function execute!(filter::FilterWalletCmd, model)
+  model.wallet = Wallet([coin for coin in model.wallet.coins
+                         if contains((y, x) -> x.name == y, filter.coinnames, coin)])
+
+  execute!(DisplayWalletCmd(), model)
+end
+
 function execute!(::HelpCmd, model)
   s = basename(Base.source_path())
   println("Crypto Wallet v1.0")
@@ -362,10 +381,11 @@ function execute!(::HelpCmd, model)
   println("  $s -h | --help")
   println()
   println("Options:")
-  println("  <none>                    Display wallet conents.")
-  println("  buy <amount> <coin>       Add investment to wallet.")
-  println("  sell <amount> <coin>      Remove investment from wallet.")
-  println("  speculate <coin> <price>  Assign speculative price and display wallet.")
+  println("  <none>                     Display wallet conents.")
+  println("  buy <amount> <coin>        Add investment to wallet.")
+  println("  sell <amount> <coin>       Remove investment from wallet.")
+  println("  speculate <coin> <price>   Assign speculative price and display wallet.")
+  println("  only <coin>[, <coin> ...]  Only display specified coins.")
 end
 
 function execute!(::NoOpCmd, model)
