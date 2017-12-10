@@ -388,7 +388,7 @@ function execute!(::DisplayWalletCmd, model)
   ])
 
   insertsep = s -> length(s) < 3 ? s : insertsep(s[1:end-3]) * " " * s[end-2:end]
-  fc = f -> strip(insertsep(string(floor(Int, f))) * "." * @sprintf("%02d", 100(f - floor(f))))
+  fc = f -> strip(insertsep(string(floor(Int, f))) * "." * @sprintf("%02d", floor(100(f - floor(f)))))
   fp = f -> (f < 0.0 ? "-" : "+") * @sprintf("%10.2f%%", abs(f))
 
   usdtotal = 0.0
