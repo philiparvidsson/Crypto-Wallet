@@ -23,7 +23,7 @@ Below are instructions on how to use the script. Maybe sure you have installed a
 
 #### Adding coins to your wallet
 
-Invoke the script with the *buy* command to add coins to your wallet. For example, if you own 0.5 Bitcoin, add it to your wallet by typing `julia cw.jl buy 0.5 bitcoin`. The script will add 0.5 bitcoin to your wallet, save it and display your wallet contents:
+Invoke the script with the *buy* command to add coins to your wallet. For example, if you own 0.5 Bitcoin, add it to your wallet by typing `julia cw.jl buy 0.5 bitcoin`. The script will add 0.5 bitcoin to your wallet, save it to your wallet file and display your wallet contents. The wallet file is called wallet.json and will be stored together with the cw.jl script file.
 
 ![](img/cw-buy.png)
 
