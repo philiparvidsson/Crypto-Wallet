@@ -15,7 +15,9 @@ When I started actively investing/speculating in cryptocurrencies, I wanted a si
 
 The script depends on the [Requests](https://github.com/JuliaWeb/Requests.jl) package to function properly, so it must be installed first. Open a Julia [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) and type the following:
 
-`julia> Pkg.add("Requests")`
+```julia
+julia> Pkg.add("Requests")
+```
 
 ### Instructions
 
