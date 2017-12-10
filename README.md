@@ -13,14 +13,28 @@ When I started actively investing/speculating in cryptocurrencies, I wanted a si
 
 ### Installation
 
-The script depends on the [Requests](https://github.com/JuliaWeb/Requests.jl) package to function properly, so it must be installed first:
+The script depends on the [Requests](https://github.com/JuliaWeb/Requests.jl) package to function properly, so it must be installed first. Open a Julia [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) and type the following:
 
 `julia> Pkg.add("Requests")`
 
 ### Instructions
+
+Below are instructions on how to use the script. Maybe sure you have installed all prerequisites before trying to run it.
 
 #### Adding coins to your wallet
 
 Invoke the script with the *buy* command to add coins to your wallet. For example, if you own 0.5 Bitcoin, add it to your wallet by typing `julia cw.jl buy 0.5 bitcoin`. The script will add 0.5 bitcoin to your wallet, save it and display your wallet contents:
 
 ![](img/cw-buy.png)
+
+#### Removing coins from your wallet
+
+Much the same way you add coins, you can remove them with the *sell* command. Let's sell half of what we bought: `julia cw.jl sell 0.1 bitcoin`
+
+![](img/cw-sell.png)
+
+#### Listing the contents of your wallet
+
+Invoking the script without any commands shows the contents of your wallet: `julia cw.jl`
+
+![](img/cw-wallet.png)
