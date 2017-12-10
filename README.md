@@ -33,8 +33,6 @@ Much the same way you add coins, you can remove them with the *sell* command. Le
 
 ![](img/cw-sell.png)
 
-#### Listing the contents of your wallet
+#### Listing wallet contents
 
 Invoking the script without any commands shows the contents of your wallet: `julia cw.jl`
-
-![](img/cw-wallet.png)
