@@ -4,7 +4,7 @@
 
 When I started actively investing/speculating in cryptocurrencies, I wanted a simple tool to keep track of the values of my investments. I came up with a script that downloads the latest ticker data from [CoinMarketCap](https://coinmarketcap.com/) and prints my cryptocurrency investments neatly in a simple table.
 
-<sup>**<i>NOTE: This is NOT an actual wallet—it does not manage your investments, it cannot transfer money and it has no access to your private keys. It only gives you an overview of your current investments!</i>**</sup>
+<sup>**<i>NOTE: This is not a wallet—it does not manage your investments, it does not store your cryptocurrencies, it cannot transfer money and it has no access to your private keys. It only gives you an overview of your current cryptocurrency investments!</i>**</sup>
 
 ## Running the script
 
