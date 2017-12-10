@@ -26,3 +26,15 @@ Below are instructions on how to use the script. Maybe sure you have installed a
 Invoke the script with the *buy* command to add coins to your wallet. For example, if you own 0.5 Bitcoin, add it to your wallet by typing `julia cw.jl buy 0.5 bitcoin`. The script will add 0.5 bitcoin to your wallet, save it and display your wallet contents:
 
 ![](img/cw-buy.png)
+
+#### Removing coins from your wallet
+
+Much the same way you add coins, you can remove them with the *sell* command. Let's sell half of what we bought: `julia cw.jl sell 0.1 bitcoin`
+
+![](img/cw-sell.png)
+
+#### Listing the contents of your wallet
+
+Invoking the script without any commands shows the contents of your wallet: `julia cw.jl`
+
+![](img/cw-wallet.png)
