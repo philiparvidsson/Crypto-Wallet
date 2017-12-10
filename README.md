@@ -19,4 +19,8 @@ The script depends on the [Requests](https://github.com/JuliaWeb/Requests.jl) pa
 
 ### Instructions
 
-Begin by addning your investments: Invoke the script with the `buy` command: `julia cw.jl buy 1.0 bitcoin`. The script will now add 1 Bitcoin to the wallet and display your wallet contents.
+#### Adding coins to your wallet
+
+Invoke the script with the *buy* command to add coins to your wallet. For example, if you own 0.5 Bitcoin, add it to your wallet by typing `julia cw.jl buy 0.5 bitcoin`. The script will add 0.5 bitcoin to your wallet, save it and display your wallet contents:
+
+![](img/cw-buy.png)
