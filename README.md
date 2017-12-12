@@ -21,7 +21,7 @@ julia> Pkg.add("Requests")
 
 ### Instructions
 
-Below are instructions on how to use the script. Maybe sure you have installed all prerequisites before trying to run it.
+Below are instructions on how to use the script. Make sure you have installed all prerequisites before trying to run it.
 
 #### Adding coins to your wallet
 
