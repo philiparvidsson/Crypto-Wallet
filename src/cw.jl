@@ -405,16 +405,28 @@ function execute!(::DisplayWalletCmd, model)
     TableCell("Owned"       , :right, 0, 1)
     TableCell("USD"         , :right, 0, 1)
     TableCell("SEK"         , :right, 0, 1)
+    TableCell("%"           , :right, 0, 1)
   ])
 
   insertsep = s -> length(s) < 3 ? s : insertsep(s[1:end-3]) * " " * s[end-2:end]
-  fc = f -> strip(insertsep(string(floor(Int, f))) * "." * @sprintf("%02d", floor(100(f - floor(f)))))
-  fp = f -> (f < 0.0 ? "-" : "+") * @sprintf("%10.2f%%", abs(f))
+  fc  = f -> strip(insertsep(string(floor(Int, f))) * "." * @sprintf("%02d", floor(100(f - floor(f)))))
+  fp1 = f -> (f < 0.0 ? "-" : "+") * @sprintf("%10.2f%%", abs(f))
+  fp2 = f -> @sprintf("%.2f%%", f)
 
   usdtotal = 0.0
   sektotal = 0.0
 
   updatecoindata!(model)
+
+  for coin in model.wallet.coins
+    coindata = model.coindata[coin.name]
+
+    usdvalue = coin.amount * coindata.priceusd
+    sekvalue = coin.amount * coindata.pricesek
+
+    usdtotal += usdvalue
+    sektotal += sekvalue
+  end
 
   rows = []
   for coin in sort(model.wallet.coins, by=coin -> coin.name)
@@ -423,17 +435,15 @@ function execute!(::DisplayWalletCmd, model)
     usdvalue = coin.amount * coindata.priceusd
     sekvalue = coin.amount * coindata.pricesek
 
-    usdtotal += usdvalue
-    sektotal += sekvalue
-
     row = TableRow([
-      TableCell(coindata.name |> lowercase   , :left , 0, 1)
-      TableCell(fc(coindata.priceusd)        , :right, 0, 1)
-      #TableCell(fc(coindata.pricesek)        , :right, 0, 1)
-      TableCell(fp(coindata.percentchange24h), :right, 0, 1)
-      TableCell(fc(coin.amount)              , :right, 0, 1)
-      TableCell(fc(usdvalue)                 , :right, 0, 1)
-      TableCell(fc(sekvalue)                 , :right, 0, 1)
+      TableCell(coindata.name |> lowercase    , :left , 0, 1)
+      TableCell(fc(coindata.priceusd)         , :right, 0, 1)
+      #TableCell(fc(coindata.pricesek)         , :right, 0, 1)
+      TableCell(fp1(coindata.percentchange24h), :right, 0, 1)
+      TableCell(fc(coin.amount)               , :right, 0, 1)
+      TableCell(fc(usdvalue)                  , :right, 0, 1)
+      TableCell(fc(sekvalue)                  , :right, 0, 1)
+      TableCell(fp2(100usdvalue/usdtotal)     , :right, 0, 1)
     ])
 
     push!(rows, row)
@@ -447,6 +457,7 @@ function execute!(::DisplayWalletCmd, model)
     TableCell("-"         , :right, 0, 1)
     TableCell(fc(usdtotal), :right, 0, 1)
     TableCell(fc(sektotal), :right, 0, 1)
+    TableCell("100.00%"   , :right, 0, 1)
   ])
 
   printtable(Table(titleleft, titlecenter, titleright, header, rows, footer))
