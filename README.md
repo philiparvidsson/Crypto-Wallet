@@ -4,7 +4,7 @@
 
 When I started actively investing/speculating in cryptocurrencies, I wanted a simple tool to keep track of the values of my investments. I came up with a script that downloads the latest ticker data from [CoinMarketCap](https://coinmarketcap.com/) and prints my cryptocurrency investments neatly in a simple table.
 
-**NOTE: This is NOT an actual wallet—it does not manage your investments, it cannot transfer money and it has no access to your private keys. It only gives you an overview of your current investments!**
+<sup>**<i>NOTE: This is not a wallet—it does not manage your investments, it does not store your cryptocurrencies, it cannot transfer money and it has no access to your private keys. It only gives you an overview of your current cryptocurrency investments!</i>**</sup>
 
 ## Running the script
 
@@ -15,15 +15,17 @@ When I started actively investing/speculating in cryptocurrencies, I wanted a si
 
 The script depends on the [Requests](https://github.com/JuliaWeb/Requests.jl) package to function properly, so it must be installed first. Open a Julia [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) and type the following:
 
-`julia> Pkg.add("Requests")`
+```julia
+julia> Pkg.add("Requests")
+```
 
 ### Instructions
 
-Below are instructions on how to use the script. Maybe sure you have installed all prerequisites before trying to run it.
+Below are instructions on how to use the script. Make sure you have installed all prerequisites before trying to run it.
 
 #### Adding coins to your wallet
 
-Invoke the script with the *buy* command to add coins to your wallet. For example, if you own 0.5 Bitcoin, add it to your wallet by typing `julia cw.jl buy 0.5 bitcoin`. The script will add 0.5 bitcoin to your wallet, save it and display your wallet contents:
+Invoke the script with the *buy* command to add coins to your wallet. For example, if you own 0.5 Bitcoin, add it to your wallet by typing `julia cw.jl buy 0.5 bitcoin`. The script will add 0.5 bitcoin to your wallet, save it to your wallet file and display your wallet contents. The wallet file is called wallet.json and will be stored together with the cw.jl script file.
 
 ![](img/cw-buy.png)
 
@@ -33,8 +35,6 @@ Much the same way you add coins, you can remove them with the *sell* command. Le
 
 ![](img/cw-sell.png)
 
-#### Listing the contents of your wallet
+#### Listing wallet contents
 
 Invoking the script without any commands shows the contents of your wallet: `julia cw.jl`
-
-![](img/cw-wallet.png)
